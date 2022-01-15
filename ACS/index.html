@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>AASAN CONSULTANCY</h1>
+
+    <div class="box">
+        <form method="POST" enctype="multipart/form-data" name="form">
+            <input type="file" name="file" class="chooser">
+            <button type="submit" role="button" class="button">Upload File</button>
+        </form>
+        <br /><br />
+
+        <form name="search-form" style="text-align:center;" id="search-form">
+            <label for="consumerId">Consumer Id:</label><br />
+            <input type="text" id="consumerId" /><br />
+            <input type="submit" value="submit" id="submit_button" class="button" />
+        </form>
+    </div>
+
+    <div id="bill_detail" class="box" hidden>
+        <div id="bill_table" class="form"></div>
+        <div id="calc_button"></div>
+        <div id="bill_summary_table" class="form" hidden></div>
+    </div>
+    <div id="loader" class="loader" hidden></div>
+
+    <div id="variables" class="box">
+        <button class="button" id="demand_charge_upload_button">Upload demand charges</button>
+        <button class="button" id="energy_charge_upload_button">Upload energy charges</button>
+        <button class="button" id="fuel_charge_upload_button">Upload fuel charges</button> <br />
+        <button class="button" id="night_rebate_upload_button">Upload night rebate charges</button>
+        <button class="button" id="ehv_rebate_upload_button">Upload EHV rebate charges</button>
+        <button class="button" id="tou_upload_button">Upload TOU rate</button>
+        <div id="upload_var_form" class="form" hidden>
+
+        </div>
+    </div>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script src="constants.js"></script>
+    <script src="drop_down_menu.js"></script>
+    <script src="upload.js"></script>
+    <script src="fetchInfo.js"></script>
+    <script src="upload_form.js"></script>
+</body>
+</html>

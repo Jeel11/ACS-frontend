@@ -1,0 +1,86 @@
+html {
+	height: 100vh;
+	background: lightgrey;
+}
+
+h1 {
+	margin: 5% auto;
+	width: 500px;
+	padding: 20px 20px 20px 20px;
+	background: white;
+	box-shadow: -8px -8px 22px black;
+	border-radius: 25px;
+	font-size: 38px;
+	font-family: 'Copperplate Gothic', serif;
+	color: black;
+	text-align: center;
+}
+
+.box {
+	margin: 5% auto;
+	width: 500px;
+	padding: 20px 20px 20px 20px;
+	background: white;
+	box-shadow: -8px -8px 22px black;
+	border-radius: 25px;
+	text-align: center;
+	font-family: 'Copperplate Gothic', serif;
+}
+
+.button {
+	width: 100px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.chooser {
+	width: fit-content;
+	border-radius: 10px;
+	text-align: center;
+	font-family: 'Copperplate Gothic', serif;
+	padding: 10px 10px 10px 10px
+}
+
+.loader {
+	border: 5px solid #f3f3f3;
+	border-radius: 50%;
+	border-top: 5px solid #3498db;
+	width: 20px;
+	height: 20px;
+	-webkit-animation: spin 2s linear infinite; /* Safari */
+	animation: spin 2s linear infinite;
+	margin: 5% auto;
+}
+
+.form {
+	margin: 5% auto;
+	width: fit-content;
+	padding: 20px 20px 20px 20px;
+	background: white;
+	// box-shadow: -8px -8px 22px black;
+	border-radius: 15px;
+	text-align: center;
+	font-family: 'Copperplate Gothic', serif;
+	border: 2px solid black;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

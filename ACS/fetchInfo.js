@@ -1,3 +1,11 @@
+var consumerId = 0;
+var year = 0;
+var month = 0;
+var ymn = 0;
+
+var calculateButton = document.createElement('button');
+calculateButton.textContent = "Calculate Bill"
+
 const mapToObj = m => {
     return Array.from(m).reduce((obj, [key, value]) => {
         obj[key] = value;
@@ -12,18 +20,55 @@ function readBillTable(node) {
     }
     return JSON.stringify(tableMap);
 }
+
+function onClickCalculate() {
+    const calculateUrl = server_url + '/acs/v1/bill/calculate?id=' + consumerId + "&ymn=" + ymn;
+    var postData = readBillTable(document.getElementById('bill'));
+    const calculateHTTPRequest = new XMLHttpRequest();
+    calculateHTTPRequest.open('POST', calculateUrl);
+    calculateHTTPRequest.setRequestHeader("Content-Type", "application/json");
+    calculateHTTPRequest.send(postData);
+
+    calculateHTTPRequest.onload = function () {
+        document.getElementById('bill_summary_table').hidden = true;
+        const billSummary = JSON.parse(this.responseText);
+        let text = '<table border="1" >'
+        for (let x in billSummary) {
+            text += "<tr><td>" + x + "</td><td>" + billSummary[x] + "</td></tr > ";
+        }
+        text += "</table>"
+        document.getElementById('bill_summary_table').innerHTML = text;
+        document.getElementById('bill_summary_table').hidden = false;
+    }
+
+    calculateHTTPRequest.onerror = function () {
+        document.getElementById('bill_summary_table').hidden = true;
+        document.getElementById('bill_summary_table').innerText = "Error";
+        document.getElementById('bill_summary_table').hidden = false;
+    }
+
+    calculateHTTPRequest.onabort = function () {
+        document.getElementById('bill_summary_table').hidden = true;
+        document.getElementById('bill_summary_table').innerText = "Timeout";
+        document.getElementById('bill_summary_table').hidden = false;
+    }
+}
+
+calculateButton.addEventListener("click", onClickCalculate);
+
 function fetchInfo() {
-    var calculateButton = document.createElement('button');
-    calculateButton.textContent = "Calculate Bill"
     const xmlHttp = new XMLHttpRequest();
     const form = document.querySelector('[name=search-form]');
     form.addEventListener('submit', e => {
         e.preventDefault();
 
-        let consumerId = document.getElementById('consumerId').value;
-        let year = document.getElementById(DROP_YEAR).value;
-        let month = document.getElementById(DROP_MONTH).value;
-        var ymn = year.toString();
+        document.getElementById('bill_table').innerHTML = null;
+        document.getElementById('calc_button').innerHTML = null;
+
+        consumerId = document.getElementById('consumerId').value;
+        year = document.getElementById(DROP_YEAR).value;
+        month = document.getElementById(DROP_MONTH).value;
+        ymn = year.toString();
         if (month < 10) {
             ymn = ymn + "0";
         }
@@ -46,44 +91,9 @@ function fetchInfo() {
                 rowNode.appendChild(td2);
                 bill.appendChild(rowNode);
             }
-            document.getElementById('bill_table').innerHTML = null;
             document.getElementById('bill_table').appendChild(bill);
             document.getElementById('bill_detail').hidden = false;
 
-            calculateButton.addEventListener("click", function () {
-                const calculateUrl = server_url + '/acs/v1/bill/calculate?id=' + consumerId + "&ymn=" + ymn;
-                var postData = readBillTable(document.getElementById('bill'));
-                const calculateHTTPRequest = new XMLHttpRequest();
-                calculateHTTPRequest.open('POST', calculateUrl);
-                calculateHTTPRequest.setRequestHeader("Content-Type", "application/json");
-                calculateHTTPRequest.send(postData);
-
-                calculateHTTPRequest.onload = function () {
-                    document.getElementById('bill_summary_table').hidden = true;
-                    const billSummary = JSON.parse(this.responseText);
-                    let text = '<table border="1" >'
-                    for (let x in billSummary) {
-                        text += "<tr><td>" + x + "</td><td>" + billSummary[x] + "</td></tr > ";
-                    }
-                    text += "</table>"
-                    document.getElementById('bill_summary_table').innerHTML = text;
-                    document.getElementById('bill_summary_table').hidden = false;
-                }
-
-                calculateHTTPRequest.onerror = function () {
-                    document.getElementById('bill_summary_table').hidden = true;
-                    document.getElementById('bill_summary_table').innerText = "Error";
-                    document.getElementById('bill_summary_table').hidden = false;
-                }
-
-                calculateHTTPRequest.onabort = function () {
-                    document.getElementById('bill_summary_table').hidden = true;
-                    document.getElementById('bill_summary_table').innerText = "Timeout";
-                    document.getElementById('bill_summary_table').hidden = false;
-                }
-            });
-
-            document.getElementById('calc_button').innerHTML = null;
             document.getElementById('calc_button').appendChild(calculateButton);
         }
 

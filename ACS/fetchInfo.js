@@ -81,15 +81,31 @@ function fetchInfo() {
             bill.border = 1;
             bill.id = "bill";
             for (let x in myObj) {
-                var rowNode = document.createElement('tr');
-                var td1 = document.createElement('td');
-                td1.innerText = x;
-                var td2 = document.createElement('td');
-                td2.innerText = myObj[x];
-                td2.contentEditable = true;
-                rowNode.appendChild(td1);
-                rowNode.appendChild(td2);
-                bill.appendChild(rowNode);
+                if (myObj[x] instanceof Array) {
+                    // populate ADJUSTMENT remarks
+                    for (var i = 0; i < myObj[x].length; i++) {
+                        for (let y in myObj[x][i]) {
+                            var rowNode = document.createElement('tr');
+                            var td1 = document.createElement('td');
+                            td1.innerText = y;
+                            var td2 = document.createElement('td');
+                            td2.innerText = myObj[x][i][y];
+                            rowNode.appendChild(td1);
+                            rowNode.appendChild(td2);
+                            bill.appendChild(rowNode);
+                        }
+                    }
+                } else {
+                    var rowNode = document.createElement('tr');
+                    var td1 = document.createElement('td');
+                    td1.innerText = x;
+                    var td2 = document.createElement('td');
+                    td2.innerText = myObj[x];
+                    td2.contentEditable = true;
+                    rowNode.appendChild(td1);
+                    rowNode.appendChild(td2);
+                    bill.appendChild(rowNode);
+                }
             }
             document.getElementById('bill_table').appendChild(bill);
             document.getElementById('bill_detail').hidden = false;

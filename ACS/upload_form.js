@@ -131,7 +131,7 @@ function create_upload_form(elementId) {
         xmlHttp.open('POST', url);
         xmlHttp.setRequestHeader("Content-Type", "application/json");
         xmlHttp.send(JSON.stringify(requestObj));
-
+        document.getElementById('upload_var_form').appendChild(loadingAnimation);
         xmlHttp.onload = function () {
             document.getElementById('upload_var_form').innerHTML = xmlHttp.responseText;
         }

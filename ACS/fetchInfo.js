@@ -28,7 +28,8 @@ function onClickCalculate() {
     calculateHTTPRequest.open('POST', calculateUrl);
     calculateHTTPRequest.setRequestHeader("Content-Type", "application/json");
     calculateHTTPRequest.send(postData);
-
+    document.getElementById('bill_summary_table').appendChild(calculatingAnimation);
+    document.getElementById('bill_summary_table').hidden = false;
     calculateHTTPRequest.onload = function () {
         document.getElementById('bill_summary_table').hidden = true;
         const billSummary = JSON.parse(this.responseText);

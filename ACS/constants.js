@@ -14,3 +14,11 @@ const DROP_MONTH = "drop_month";
 const UPLOAD_YEAR = "upload_year";
 const UPLOAD_MONTH = "upload_month";
 const UPLOAD_TARIFF = "upload_tariff";
+
+const loadingAnimation = document.createElement('div');
+loadingAnimation.id = "loading_animation";
+loadingAnimation.className = "loader";
+
+const calculatingAnimation = document.createElement('div');
+calculatingAnimation.innerText = "Calculating...";
+calculatingAnimation.appendChild(loadingAnimation);

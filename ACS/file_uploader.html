@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>AASAN CONSULTANCY</h1>
+
+    <div class="box">
+        <form method="POST" enctype="multipart/form-data" name="form">
+            <p id="file_upload_status"></p>
+            <input type="file" name="file" class="chooser">
+            <button type="submit" role="button" class="button">Upload File</button>
+        </form>
+    </div>
+
+    <div id="loader" class="loader" hidden></div>
+
+    <script src="upload.js"></script>
+</body>
+</html>

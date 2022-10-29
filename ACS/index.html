@@ -8,22 +8,16 @@
     <h1>AASAN CONSULTANCY</h1>
 
     <div class="box">
-        <!--<form method="POST" enctype="multipart/form-data" name="form">
-            <input type="file" name="file" class="chooser">
-            <button type="submit" role="button" class="button">Upload File</button>
-        </form>-->
-        <br /><br />
-
         <form name="search-form" style="text-align:center;" id="search-form">
-            <label for="consumerId">Consumer Id:</label><br />
-            <input type="text" id="consumerId" /><br />
-            <input type="submit" value="submit" id="submit_button" class="button" />
+            <label for="consumerId">Enter Consumer Id:</label><br />
+            <input type="text" id="consumerId" style="text-align:center;"/><br />
+            <input type="submit" value="Submit" id="submit_button" class="button" />
         </form>
     </div>
 
     <div id="bill_detail" class="box" hidden>
         <div id="bill_table" class="form"></div>
-        <div id="calc_button"></div>
+        <button id="calc_button" class="button" hidden>Calculate Bill</button>
         <div id="bill_summary_table" class="form" hidden></div>
     </div>
     <div id="loader" class="loader" hidden></div>
@@ -48,7 +42,6 @@
 
     <script src="constants.js"></script>
     <script src="drop_down_menu.js"></script>
-    <!--<script src="upload.js"></script>-->
     <script src="fetchInfo.js"></script>
     <script src="upload_form.js"></script>
 </body>

@@ -17,6 +17,7 @@ function collectDataFromChildNodes(node) {
 function createTariffDropDown(id) {
     var tariffDropDown = document.createElement('select');
     tariffDropDown.id = id;
+    tariffDropDown.className = "chooser";
     var tariffOption1 = document.createElement('option');
     tariffOption1.innerText = HTPI;
     tariffDropDown.appendChild(tariffOption1);

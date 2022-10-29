@@ -3,8 +3,7 @@ var year = 0;
 var month = 0;
 var ymn = 0;
 
-var calculateButton = document.createElement('button');
-calculateButton.textContent = "Calculate Bill"
+var calculateButton = document.getElementById('calc_button');
 
 const mapToObj = m => {
     return Array.from(m).reduce((obj, [key, value]) => {
@@ -28,6 +27,7 @@ function onClickCalculate() {
     calculateHTTPRequest.open('POST', calculateUrl);
     calculateHTTPRequest.setRequestHeader("Content-Type", "application/json");
     calculateHTTPRequest.send(postData);
+    document.getElementById('bill_summary_table').innerHTML = null;
     document.getElementById('bill_summary_table').appendChild(calculatingAnimation);
     document.getElementById('bill_summary_table').hidden = false;
     calculateHTTPRequest.onload = function () {
@@ -64,7 +64,6 @@ function fetchInfo() {
         e.preventDefault();
 
         document.getElementById('bill_table').innerHTML = null;
-        document.getElementById('calc_button').innerHTML = null;
 
         consumerId = document.getElementById('consumerId').value;
         year = document.getElementById(DROP_YEAR).value;
@@ -110,8 +109,7 @@ function fetchInfo() {
             }
             document.getElementById('bill_table').appendChild(bill);
             document.getElementById('bill_detail').hidden = false;
-
-            document.getElementById('calc_button').appendChild(calculateButton);
+            calculateButton.hidden = false;
         }
 
         const url = server_url+ '/acs/v1/fetch/info?id=' + consumerId + '&ymn=' + ymn;

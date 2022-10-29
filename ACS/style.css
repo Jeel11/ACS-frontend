@@ -24,21 +24,25 @@ h1 {
 	box-shadow: -8px -8px 22px black;
 	border-radius: 25px;
 	text-align: center;
-	font-family: 'Copperplate Gothic', serif;
+	font-family: sans-serif;
 }
 
 .button {
-	width: 100px;
-	border-radius: 10px;
+	width: fit-content;
+	border-radius: 5px;
 	text-align: center;
+	font-family: sans-serif;
+	margin: 5px 5px 5px 5px;
+	padding: 5px 3px 5px 3px;
 }
 
 .chooser {
 	width: fit-content;
 	border-radius: 10px;
 	text-align: center;
-	font-family: 'Copperplate Gothic', serif;
-	padding: 10px 10px 10px 10px
+	font-family: sans-serif;
+	margin: 5px 5px 5px 5px;
+	padding: 3px 2px 3px 2px;
 }
 
 .loader {
@@ -60,7 +64,7 @@ h1 {
 	// box-shadow: -8px -8px 22px black;
 	border-radius: 15px;
 	text-align: center;
-	font-family: 'Copperplate Gothic', serif;
+	font-family: sans-serif;
 	border: 2px solid black;
 }
 

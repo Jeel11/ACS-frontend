@@ -11,6 +11,7 @@ const mapToObj = m => {
         return obj;
     }, {});
 };
+
 function readBillTable(node) {
     var tableMap = {};
     for (var i = 0; i < node.childNodes.length; i++) {

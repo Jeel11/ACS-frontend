@@ -27,6 +27,17 @@ function createMonthDropDown(id) {
     return selectMonth;
 }
 
-document.getElementById('search-form').insertBefore(createYearDropDown(DROP_YEAR), document.getElementById('submit_button'));
-document.getElementById('search-form').insertBefore(createMonthDropDown(DROP_MONTH), document.getElementById('submit_button'));
-document.getElementById('search-form').insertBefore(document.createElement('br'), document.getElementById('submit_button'));
+function insertDropDown() {
+    if(document.getElementById('search-form') != null) {
+        document.getElementById('search-form').insertBefore(createYearDropDown(DROP_YEAR), document.getElementById('submit_button'));
+        document.getElementById('search-form').insertBefore(createMonthDropDown(DROP_MONTH), document.getElementById('submit_button'));
+        document.getElementById('search-form').insertBefore(document.createElement('br'), document.getElementById('submit_button'));
+    }
+    if(document.getElementById('xlsx_format') != null) {
+        document.getElementById('xlsx_format').insertBefore(createYearDropDown(DROP_YEAR), document.getElementById('format-button'));
+        document.getElementById('xlsx_format').insertBefore(createMonthDropDown(DROP_MONTH), document.getElementById('format-button'));
+        document.getElementById('xlsx_format').insertBefore(document.createElement('br'), document.getElementById('format-button'));
+    }
+}
+
+insertDropDown();

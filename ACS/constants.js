@@ -1,4 +1,5 @@
 const server_url = "https://acs-bill-calculator.herokuapp.com";
+const file_formatter_endpoint = "http://localhost:3000";
 const DEMAND_CHARGE_DOC = "DEMAND_CHARGE";
 const ENERGY_CHARGE_DOC = "ENERGY_CHARGE";
 const FUEL_CHARGE_DOC = "FUEL_CHARGE";

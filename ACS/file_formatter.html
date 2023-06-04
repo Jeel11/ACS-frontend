@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1>AASAN CONSULTANCY</h1>
+    <div class="box">
+      <form id="xlsx_format" text-align="left">
+        <p id="server_status">Checking server status...</p>
+        <label for="input_path">Input file path</label>
+        <input id="input_path" size="50"/><br/>
+        <label for="file_type">File type</label>
+        <select id="file_type" class="chooser"><option>HT_BILL</option><option>ADJUSTMENT</option></select><br/>
+        <button type="submit" class="button" id="format-button">Format</button>
+        <button class="button" id="kill_button" hidden=true>Stop server</button>
+      </form>
+      <div class="modal" id="loading_gif">
+        <img src="running_elephant.gif" width="200px" height="200px"/>
+      </div>
+    </div>
+    <script src="constants.js"></script>
+    <script src="drop_down_menu.js"></script>
+    <script src="file_formatter.js"></script>
+  </body>
+</html>
